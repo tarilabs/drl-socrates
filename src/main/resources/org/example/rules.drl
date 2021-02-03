@@ -1,0 +1,17 @@
+package org.drools;
+
+declare Mortal
+	name : String
+end
+
+rule "All humans are mortals"
+when
+	$h : Human()
+then
+	insertLogical( new Mortal( $h.getName() ) );
+end
+
+query "Is Socrates mortal?"
+	Mortal( name == "Socrates" )
+end
+
